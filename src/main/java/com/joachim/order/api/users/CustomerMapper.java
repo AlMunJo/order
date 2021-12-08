@@ -1,8 +1,8 @@
-package com.joachim.order.api.customer;
+package com.joachim.order.api.users;
 
-import com.joachim.order.api.customer.dtos.CreatedCustomeDto;
-import com.joachim.order.api.customer.dtos.CustomerDto;
-import com.joachim.order.domain.Customer;
+import com.joachim.order.api.users.dtos.CreatedCustomeDto;
+import com.joachim.order.api.users.dtos.CustomerDto;
+import com.joachim.order.domain.users.Customer;
 
 public class CustomerMapper {
     public static CustomerDto modelToDto(Customer customer){
@@ -10,7 +10,7 @@ public class CustomerMapper {
                 customer.getUuid(),
                 customer.getFirstName(),
                 customer.getLastName(),
-                customer.getEmailAdress(),
+                customer.getEmailAddress(),
                 customer.getPhoneNumber(),
                 customer.getAddress());
     }

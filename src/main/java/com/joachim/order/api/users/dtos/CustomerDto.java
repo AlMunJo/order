@@ -1,4 +1,4 @@
-package com.joachim.order.api.customer.dtos;
+package com.joachim.order.api.users.dtos;
 
 import com.joachim.order.domain.Address;
 
