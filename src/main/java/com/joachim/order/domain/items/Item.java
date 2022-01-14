@@ -1,14 +1,26 @@
 package com.joachim.order.domain.items;
 
-import com.joachim.order.domain.Identifiable;
+import javax.persistence.*;
 
-public class Item extends Identifiable {
+@Entity
+public class Item  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String name;
+
     private String description;
+
+    @Column(nullable = true)
     private int amount;
+
+    @Column(nullable = true)
     private double price;
 
 
+    public Item() {
+    }
 
     public Item(String name, String description, int amount, double price) {
         this.name = name;
@@ -47,5 +59,9 @@ public class Item extends Identifiable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public long getId() {
+        return id;
     }
 }

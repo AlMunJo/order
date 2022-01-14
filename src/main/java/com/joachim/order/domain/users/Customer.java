@@ -2,18 +2,36 @@ package com.joachim.order.domain.users;
 
 import com.joachim.order.domain.Address;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+
+@Entity
 public class Customer extends User {
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String phoneNumber;
+
+    @Embedded
+    @Column(nullable = false)
     private Address address;
+
+    public Customer(){
+        super(Role.CUSTOMER);
+    }
 
     public Customer(String firstName,
                     String lastName,
                     String emailAddress,
+                    String password,
                     String phoneNumber,
                     Address address) {
-        super(emailAddress, Role.CUSTOMER);
+        super(emailAddress, Role.CUSTOMER, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

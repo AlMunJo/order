@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @ControllerAdvice
 public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerController.class);
 
     @ExceptionHandler(EmailAlreadyUsedException.class)
     protected void emailAddressInvalidException(EmailAlreadyUsedException emailException, HttpServletResponse response) throws IOException {

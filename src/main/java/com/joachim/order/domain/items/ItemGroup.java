@@ -1,24 +1,34 @@
 package com.joachim.order.domain.items;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
 
+@Entity
 public final class ItemGroup {
-    private final List<ItemSnapshot> itemSnapshots;
-    private final double unitPrice;
-    private final int amount;
-    private final LocalDate shippingDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public ItemGroup(List<ItemSnapshot> itemSnapshots, double unitPrice, int amount) {
-        this.itemSnapshots = itemSnapshots;
+    private double unitPrice;
+    private int amount;
+    private LocalDate shippingDate;
+
+    @OneToOne
+    @JoinColumn(foreignKey=@ForeignKey(name="itemGroup_item_fk"))
+    private Item item;
+
+    public ItemGroup() {
+    }
+
+    public ItemGroup(Item item, double unitPrice, int amount) {
+        this.item = item;
         this.unitPrice = unitPrice;
         this.amount = amount;
         this.shippingDate = LocalDate.now();
     }
 
-    public List<ItemSnapshot> getItemSnapshots() {
-        return itemSnapshots;
+    public Item getItem() {
+        return item;
     }
 
     public double getUnitPrice() {
@@ -31,5 +41,9 @@ public final class ItemGroup {
 
     public LocalDate getShippingDate() {
         return shippingDate;
+    }
+
+    private void setShippingDate(LocalDate shippingDate) {
+        this.shippingDate = shippingDate;
     }
 }
